@@ -1,0 +1,21 @@
+class Solution {
+  public:
+  void findpathsum(Node* root,int target,int sum,bool &ans){
+      if(!root){
+          return;
+      }
+      sum+=root->data;
+      if(sum==target&&!root->left&&!root->right){
+      ans=true;
+      return;
+      }
+      findpathsum(root->left,target,sum,ans);
+      findpathsum(root->right,target,sum,ans);
+  }
+    bool hasPathSum(Node *root, int target) {
+          int sum=0;
+          bool ans=false;
+          findpathsum(root,target,sum,ans);
+          return ans;
+    }
+};
